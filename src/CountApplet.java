@@ -35,10 +35,10 @@ import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Count extends Applet
+public class CountApplet extends Applet
 {
-    ArrayList labels=new ArrayList();
-    ArrayList count=new ArrayList();
+    ArrayList<String> labels=new ArrayList<String>();
+    ArrayList<Integer> count=new ArrayList<Integer>();
     Integer[] index;
 
     public void getLetterFrequency(String text)
@@ -75,9 +75,9 @@ public class Count extends Applet
 	index=new Integer[n];
 	for(int i=0;i<n;i++)
 	    index[i]=new Integer(i);
-	Arrays.sort(index,new Comparator()
+	Arrays.sort(index,new Comparator<Integer>()
 	    {
-		public int compare(Object obj1, Object obj2)
+		public int compare(Integer obj1, Integer obj2)
 		{
 		    int n1=((Integer)obj1).intValue();
 		    int n2=((Integer)obj2).intValue();
@@ -87,12 +87,12 @@ public class Count extends Applet
     }
     public static void main(String args[])
     {
-	Count count=new Count();
-	count.getLetterFrequency("abcd eded");
+	CountApplet count=new CountApplet();
+	count.getLetterFrequency("Mr. Speaker, Mr. Vice President, Members of Congress, my fellow Americans: Today in America, a teacher spent extra time with a student who needed it, and did her part to lift America's graduation rate to its highest level in more than three decades.  An entrepreneur flipped on the lights in her tech startup, and did her part to add to the more than eight million new jobs our businesses have created over the past four years. An autoworker fine-tuned some of the best, most fuel-efficient cars in the world, and did his part to help America wean itself off foreign oil.  A farmer prepared for the spring after the strongest five-year stretch of farm exports in our history.  A rural doctor gave a young child the first prescription to treat asthma that his mother could afford.  A man took the bus home from the graveyard shift, bone-tired but dreaming big dreams for his son.  And in tight-knit communities across America, fathers and mothers will tuck in their kids, put an arm around their spouse, remember fallen comrades, and give thanks for being home from a war that, after twelve long years, is finally coming to an end.");
     }
     class CountTable extends Frame
     {
-	CountTable(String title, ArrayList labels, ArrayList count,Integer[] index)
+	CountTable(String title, ArrayList<String> labels, ArrayList<Integer> count,Integer[] index)
 	{
 	    String result="";
 	    for(int i=0;i<labels.size();i++)
@@ -124,4 +124,4 @@ public class Count extends Applet
     }   
 }
 
-// Count.java ends here
+// CountApplet.java ends here

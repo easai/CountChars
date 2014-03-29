@@ -2,7 +2,7 @@ TARGET=CountChars.jar
 
 SRCDIR=src
 LIBDIR=lib
-SRC=PieChart.java Count.java 
+SRC=PieChart.java CountApplet.java 
 
 CLASSESDIR=classes
 CLASSES=$(SRC:.java=.class)
