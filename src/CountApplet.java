@@ -56,18 +56,20 @@ public class CountApplet extends Applet
     }
     private void count(String text)
     {
-	String ch;
+	char ch;
+	String str="";
 	for(int i=0;i<text.length();i++)
 	    {
-		ch=String.valueOf(text.charAt(i));
-		if(labels.contains(ch))
+		ch=text.charAt(i);
+		str=String.valueOf(ch);		
+		if(labels.contains(str))
 		    {
-			int k=labels.indexOf(new String(ch));
+			int k=labels.indexOf(str);
 			count.set(k,new Integer(((Integer)count.get(k)).intValue()+1));
 		    }
-		else
-		    {
-			labels.add(ch);
+		else if(ch!=' '&&ch!='\n'&&ch!='\r')
+		    {			
+			labels.add(str);
 			count.add(new Integer(1));
 		    }
 	    }

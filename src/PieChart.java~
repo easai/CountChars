@@ -41,7 +41,7 @@ public class PieChart extends Frame
     Integer[] index;
     double total=0;
 
-    PieChart(String title, ArrayList<String> labels, ArrayList<Integer> values, Integer[] index)
+    PieChart(String title, ArrayList labels, ArrayList values, Integer[] index)
     {
 	this.labels=labels;
 	this.values=values;
@@ -69,15 +69,14 @@ public class PieChart extends Frame
 	int x0=width/2;
 	int y0=height/2;
 	int x,y;
-	double theta=-Math.PI/2.0,delta=0,percentage=0;
+	double theta=-Math.PI/2.0,delta=0;
 	for(int i=0;i<labels.size();i++)
 	    {
 		int n=index[i].intValue();
-		percentage=((Integer)values.get(n)).intValue()/total;
-		delta=percentage*2*Math.PI;
+		delta=((Integer)values.get(n)).intValue()/total*2*Math.PI;
 		theta+=delta;
 		g.drawLine(x0,y0,(int)(rx*Math.cos(theta)+x0),(int)(ry*Math.sin(theta)+y0));
-		String label=(String)labels.get(n)+", "+Math.round(percentage*100)+"%";
+		String label=(String)labels.get(n);
 		FontMetrics fm=getFontMetrics(g.getFont());
 		if(label.equals(" "))
 		    {
@@ -113,8 +112,8 @@ public class PieChart extends Frame
     // For debugging purposes only
     public static void main(String args[])
     {
-	ArrayList<String> labels=new ArrayList<String>();
-	ArrayList<Integer> values=new ArrayList<Integer>();
+	ArrayList labels=new ArrayList();
+	ArrayList values=new ArrayList();
 	labels.add("a");
 	labels.add("b");
 	labels.add("c");
